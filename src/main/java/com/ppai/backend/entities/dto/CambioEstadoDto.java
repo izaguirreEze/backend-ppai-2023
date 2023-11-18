@@ -7,5 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LlamadaDto {
+public class CambioEstadoDto {
+
 }
