@@ -5,16 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "estados")
+import java.util.List;
+
+@Entity(name = "Estados")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Estado {
     @Id
-    @Column(name = "estado_id", nullable = false, unique = true)
+    @Column(name = "id_estado", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Basic
     private String nombre;
+
+    @OneToMany(mappedBy = "estado")
+    private List<CambioEstado> cambiosEstado;
+
+    @OneToMany(mappedBy = "estadoActual")
+    private List<Llamada> llamadas;
 }

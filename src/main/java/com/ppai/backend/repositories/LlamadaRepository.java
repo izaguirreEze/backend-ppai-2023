@@ -1,4 +1,7 @@
 package com.ppai.backend.repositories;
 
-public interface LlamadaRepository {
+import com.ppai.backend.entities.Llamada;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LlamadaRepository extends JpaRepository<Llamada, Long> {
 }

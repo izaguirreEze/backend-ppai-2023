@@ -7,16 +7,19 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Entity(name = "cambios_estado")
+@Entity(name = "Cambios_Estados")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CambioEstado {
-    @Id
+    @EmbeddedId
+    private CambioEstadoID id;
+    
     @Column(name = "fecha_hora_inicio", nullable = false, unique = true)
     private LocalDateTime fechaHoraInicio;
-
+    
     @ManyToOne
-    @JoinColumn(name = "estado_id", nullable = false)
+    @MapsId(value = "id_estado")
+    @JoinColumn(name = "id_estado", nullable = false)
     private Estado estado;
 }

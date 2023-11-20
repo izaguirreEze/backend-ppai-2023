@@ -1,2 +1,8 @@
-package com.ppai.backend.repositories;public interface InformacionClienteRepository {
+package com.ppai.backend.repositories;
+
+import com.ppai.backend.entities.InformacionCliente;
+import com.ppai.backend.entities.InformacionClienteID;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface InformacionClienteRepository extends JpaRepository<InformacionCliente, InformacionClienteID> {
 }

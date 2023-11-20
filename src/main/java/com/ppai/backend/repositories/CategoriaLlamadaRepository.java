@@ -1,4 +1,7 @@
 package com.ppai.backend.repositories;
 
-public interface CategoriaLlamadaRepository {
+import com.ppai.backend.entities.CategoriaLlamada;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoriaLlamadaRepository extends JpaRepository<CategoriaLlamada, Long> {
 }
