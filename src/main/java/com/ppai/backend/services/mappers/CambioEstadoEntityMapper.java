@@ -12,6 +12,7 @@ public class CambioEstadoEntityMapper implements Function<CambioEstadoDto, Cambi
         return new CambioEstado(
                 ce.getId(),
                 ce.getFechaHoraInicio(),
+                null,
                 null
         );
     }

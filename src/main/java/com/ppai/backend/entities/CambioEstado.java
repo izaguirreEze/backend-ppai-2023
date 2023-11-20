@@ -22,4 +22,9 @@ public class CambioEstado {
     @MapsId(value = "id_estado")
     @JoinColumn(name = "id_estado", nullable = false)
     private Estado estado;
+
+    @ManyToOne
+    @MapsId(value = "id_llamada")
+    @JoinColumn(name = "id_llamada", referencedColumnName = "id")
+    private Llamada llamada;
 }

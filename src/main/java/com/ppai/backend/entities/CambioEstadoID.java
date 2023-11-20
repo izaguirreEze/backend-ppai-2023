@@ -16,6 +16,8 @@ import java.io.Serializable;
 public class CambioEstadoID implements Serializable {
     @Column(name = "id_estado")
     private long idEstado;
+    @Column(name = "id_llamada")
     private long idLlamada;
+    @Column(name = "id_cambio_estado")
     private long idCambioEstado;
 }

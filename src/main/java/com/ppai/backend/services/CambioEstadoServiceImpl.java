@@ -1,15 +1,13 @@
 package com.ppai.backend.services;
 
-import com.ppai.backend.entities.CambioEstado;
-import com.ppai.backend.entities.CambioEstadoID;
-import com.ppai.backend.entities.CambioEstadoIDGenerator;
-import com.ppai.backend.entities.Estado;
+import com.ppai.backend.entities.*;
 import com.ppai.backend.entities.dto.CambioEstadoDto;
 import com.ppai.backend.repositories.CambioEstadoIDGRepository;
 import com.ppai.backend.repositories.CambioEstadoRepository;
 import com.ppai.backend.repositories.EstadoRepository;
 import com.ppai.backend.services.mappers.CambioEstadoDtoMapper;
 import com.ppai.backend.services.mappers.CambioEstadoEntityMapper;
+import org.aspectj.weaver.tools.cache.CacheBacking;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
@@ -73,7 +71,8 @@ public class CambioEstadoServiceImpl implements CambioEstadoService {
 
     @Override
     public CambioEstadoDto getById(CambioEstadoID cambioEstadoID) {
-        return null;
+        Optional<CambioEstado> cambioEstado = this.cambioEstadoRepository.findById(cambioEstadoID);
+        return cambioEstado.map(dtoMapper).orElseThrow();
     }
 
     @Override

@@ -14,6 +14,7 @@ public class EstadoEntityMapper implements Function<EstadoDto, Estado> {
         return new Estado(
                 estadoDto.getIdEstado(),
                 estadoDto.getNombre(),
+                null,
                 null
         );
     }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.function.Function;
 @Service
 public class CambioEstadoDtoMapper implements Function<CambioEstado, CambioEstadoDto> {
-
     @Override
     public CambioEstadoDto apply(CambioEstado cambioEstado) {
         return  new CambioEstadoDto(
@@ -17,3 +16,4 @@ public class CambioEstadoDtoMapper implements Function<CambioEstado, CambioEstad
         );
     }
 }
+
