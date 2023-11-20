@@ -36,16 +36,16 @@ public class Llamada {
 
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "opcion_seleccionada", referencedColumnName = "id_opcion_llamada"),
-            @JoinColumn(name = "id_categoria_llamada", referencedColumnName = "id_categoria_llamada")
+            @JoinColumn(name = "opcion_seleccionada", referencedColumnName = "id_opcion_llamada", insertable=false, updatable=false),
+            @JoinColumn(name = "id_categoria_llamada", referencedColumnName = "id_categoria_llamada", insertable=false, updatable=false)
     })
     private OpcionLlamada opcionSeleccionada;
 
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "sub_opcion_seleccionada", referencedColumnName = "id_sub_opcion_llamada"),
-            @JoinColumn(name = "opcion_seleccionada", referencedColumnName = "id_opcion_llamada"),
-            @JoinColumn(name = "id_categoria_llamada", referencedColumnName = "id_categoria_llamada")
+            @JoinColumn(name = "sub_opcion_seleccionada", referencedColumnName = "id_sub_opcion_llamada", insertable=false, updatable=false),
+            @JoinColumn(name = "opcion_seleccionada", referencedColumnName = "id_opcion_llamada", insertable=false, updatable=false),
+            @JoinColumn(name = "id_categoria_llamada", referencedColumnName = "id_categoria_llamada", insertable=false, updatable=false)
     })
     private SubOpcionLlamada subOpcionSeleccionada;
 

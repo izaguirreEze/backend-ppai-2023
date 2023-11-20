@@ -43,36 +43,16 @@ public class LlamadaServiceImpl implements LlamadaService {
             Llamada llamada = llamadaOptional.get();
 
             // MANEJO DE PUNTEROS Y CUESTIONES
-            SubOpcionLlamadaID suboID = new SubOpcionLlamadaID(
-                    entity.getIdSubOpcionSeleccionada(),
-                    entity.getIdOpcionSeleccionada(),
-                    entity.getIdCategoria()
-            );
-            Optional<SubOpcionLlamada> subOpcionLlamadaOptional = this.subOpcionLlamadaRepository.findById(suboID);
-            SubOpcionLlamada subOpcionLlamada = subOpcionLlamadaOptional.orElseThrow();
-
-            OpcionLlamadaID opID = new OpcionLlamadaID(
-                    entity.getIdOpcionSeleccionada(),
-                    entity.getIdCategoria()
-            );
-            Optional<OpcionLlamada> opcionLlamadaOptional = this.opcionLlamadaRepository.findById(opID);
-            OpcionLlamada opcionLlamada = opcionLlamadaOptional.orElseThrow();
-
-            Optional<CategoriaLlamada> categoriaLlamadaOptional = this.categoriaLlamadaRepository.findById(entity.getIdCategoria());
-            CategoriaLlamada categoriaLlamada = categoriaLlamadaOptional.orElseThrow();
-
             Optional<Estado> estadoOptional = this.estadoRepository.findFirstByNombre(entity.getEstado());
+            System.out.println(estadoOptional.get());
             Estado estado = estadoOptional.orElseThrow();
 
             Optional<Cliente> clienteOptional = this.clienteRepository.findById(entity.getIdCliente());
             Cliente cliente = clienteOptional.orElseThrow();
 
             // SETTERS Y SAVE
-            llamada.setCategoriaLlamada(categoriaLlamada);
             llamada.setCliente(cliente);
             llamada.setEstadoActual(estado);
-            llamada.setOpcionSeleccionada(opcionLlamada);
-            llamada.setSubOpcionSeleccionada(subOpcionLlamada);
             this.llamadaRepository.save(llamada);
             return this.dtoMapper.apply(llamada);
         }else{

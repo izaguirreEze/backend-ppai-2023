@@ -11,16 +11,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cambio-estado")
 public class CambioEstadoController {
-    private final CambioEstadoService serviceCE;
+    private final CambioEstadoService cambioEstadoService;
 
-    public CambioEstadoController(CambioEstadoService serviceCE) {
-        this.serviceCE = serviceCE;
+    public CambioEstadoController(CambioEstadoService cambioEstadoService) {
+        this.cambioEstadoService = cambioEstadoService;
     }
 
     @GetMapping
     public ResponseEntity<List<CambioEstadoDto>> getAll(){
         try {
-            List<CambioEstadoDto> cambios = this.serviceCE.getAll();
+            List<CambioEstadoDto> cambios = this.cambioEstadoService.getAll();
             return ResponseEntity.ok(cambios);
         }catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -30,11 +30,10 @@ public class CambioEstadoController {
     @PostMapping
     public ResponseEntity<CambioEstadoDto> add(@RequestBody CambioEstadoDto cambioEstadoDto) {
         try {
-            CambioEstadoDto createdCambioEstado = this.serviceCE.add(cambioEstadoDto);
+            CambioEstadoDto createdCambioEstado = this.cambioEstadoService.add(cambioEstadoDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdCambioEstado);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
 }

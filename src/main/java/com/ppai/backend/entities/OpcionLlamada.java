@@ -25,5 +25,5 @@ public class OpcionLlamada {
     private CategoriaLlamada categoriaLlamada;
 
     @OneToMany(mappedBy = "opcionLlamada")
-    private List<OpcionLlamada> opcionesLlamada;
+    private List<SubOpcionLlamada> subOpcionesLlamada;
 }
