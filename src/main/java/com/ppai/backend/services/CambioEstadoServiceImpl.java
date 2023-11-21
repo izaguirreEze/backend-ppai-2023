@@ -101,4 +101,11 @@ public class CambioEstadoServiceImpl implements CambioEstadoService {
         this.cambioEstadoIDGRepository.save(nvCE);
         return ceIDG1.getSeq();
     }
+
+
+    @Override
+    public List<CambioEstadoDto> getAllByIdLlamada(long idLlamada) {
+        List<CambioEstado> cambiosE = this.cambioEstadoRepository.findAllById_IdLlamada(idLlamada);
+        return cambiosE.stream().map(dtoMapper).toList();
+    }
 }

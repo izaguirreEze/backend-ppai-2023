@@ -36,4 +36,16 @@ public class CambioEstadoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/all-by-llamada")
+    public ResponseEntity<List<CambioEstadoDto>> getAllByLlamada(
+            @RequestParam(name = "id-llamada") long idLlamada
+    ){
+        try {
+            List<CambioEstadoDto> cambios = this.cambioEstadoService.getAllByIdLlamada(idLlamada);
+            return ResponseEntity.ok(cambios);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
