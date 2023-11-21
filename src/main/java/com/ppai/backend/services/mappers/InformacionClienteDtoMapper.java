@@ -13,7 +13,7 @@ public class InformacionClienteDtoMapper implements Function<InformacionCliente,
     public InformacionClienteDto apply(InformacionCliente informacionCliente) {
         return new InformacionClienteDto(
                 informacionCliente.getId(),
-                informacionCliente.getCliente().getNroDocumento(),
+                informacionCliente.getValidacion().getIdValidacion(),
                 informacionCliente.getDatoAValidar()
         );
     }

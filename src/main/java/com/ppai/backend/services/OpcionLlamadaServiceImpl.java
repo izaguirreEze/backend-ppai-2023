@@ -88,4 +88,12 @@ public class OpcionLlamadaServiceImpl implements OpcionLlamadaService {
         this.opcionLlamadaIDGRepository.save(idgN);
         return idg1.getSeq();
     }
+
+    @Override
+    public List<OpcionLlamadaDto> getAllByIdCategoria(Long idCategoria) {
+        Optional<CategoriaLlamada> categoriaLlamadaOptional = this.categoriaLlamadaRepository.findById(idCategoria);
+        CategoriaLlamada categoriaLlamada = categoriaLlamadaOptional.orElseThrow();
+        List<OpcionLlamada> opcionLlamadas = this.opcionLlamadaRepository.findAllByCategoriaLlamada(categoriaLlamada);
+        return opcionLlamadas.stream().map(opcionDtoMapper).toList();
+    }
 }

@@ -99,4 +99,17 @@ public class SubOpcionLlamadaServiceImpl implements SubOpcionLlamadaService {
         this.subOpcionLlamadaIDGRepository.save(idgN);
         return idg1.getSeq();
     }
+
+    @Override
+    public List<SubOpcionLlamadaDto> getAllByIdOpcion(Long idOpcion, Long idCategoria) {
+        OpcionLlamadaID opID = new OpcionLlamadaID(
+                idOpcion,
+                idCategoria
+        );
+        Optional<OpcionLlamada> opcionLlamadaOptional = this.opcionLlamadaRepository.findById(opID);
+        OpcionLlamada opcionLlamada = opcionLlamadaOptional.orElseThrow();
+
+        List<SubOpcionLlamada> subOpcionLlamadas = this.subOpcionLlamadaRepository.findAllByOpcionLlamada(opcionLlamada);
+        return subOpcionLlamadas.stream().map(dtoMapper).toList();
+    }
 }

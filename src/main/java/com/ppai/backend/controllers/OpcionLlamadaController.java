@@ -62,4 +62,16 @@ public class OpcionLlamadaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/all-by-categoria")
+    public ResponseEntity<List<OpcionLlamadaDto>> getAllByIdCategoria(
+            @RequestParam(name = "id-categoria") Long idCategoria
+    ){
+        try {
+            List<OpcionLlamadaDto> opcionLlamadaDtos = this.opcionLlamadaService.getAllByIdCategoria(idCategoria);
+            return ResponseEntity.ok(opcionLlamadaDtos);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

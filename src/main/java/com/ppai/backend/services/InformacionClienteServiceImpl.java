@@ -76,7 +76,8 @@ public class InformacionClienteServiceImpl implements InformacionClienteService 
 
     @Override
     public List<InformacionClienteDto> getAll() {
-        return null;
+        List<InformacionCliente> informacionClientes = this.informacionClienteRepository.findAll();
+        return informacionClientes.stream().map(dtoMapper).toList();
     }
 
     public long getUltimoNumero(){
@@ -89,5 +90,14 @@ public class InformacionClienteServiceImpl implements InformacionClienteService 
         idgN.setNombre("ceID");
         this.informacionClienteIDGRepository.save(idgN);
         return idg1.getSeq();
+    }
+
+    @Override
+    public List<InformacionClienteDto> getAllByCliente(Long nroDocumento) {
+        Optional<Cliente> clienteOptional = this.clienteRepository.findById(nroDocumento);
+        Cliente cliente = clienteOptional.orElseThrow();
+
+        List<InformacionCliente> informacionClientes = this.informacionClienteRepository.findAllByCliente(cliente);
+        return informacionClientes.stream().map(dtoMapper).toList();
     }
 }

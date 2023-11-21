@@ -1,10 +1,7 @@
 package com.ppai.backend.controllers;
 
-import com.ppai.backend.entities.OpcionLlamadaID;
 import com.ppai.backend.entities.SubOpcionLlamadaID;
-import com.ppai.backend.entities.dto.OpcionLlamadaDto;
 import com.ppai.backend.entities.dto.SubOpcionLlamadaDto;
-import com.ppai.backend.services.OpcionLlamadaService;
 import com.ppai.backend.services.SubOpcionLlamadaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +12,10 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/v1/sub-opciones-llamada")
-public class SubOpcionLlamada {
+public class SubOpcionLlamadaController {
     private final SubOpcionLlamadaService subOpcionLlamadaService;
 
-    public SubOpcionLlamada(SubOpcionLlamadaService subOpcionLlamadaService) {
+    public SubOpcionLlamadaController(SubOpcionLlamadaService subOpcionLlamadaService) {
         this.subOpcionLlamadaService = subOpcionLlamadaService;
     }
 
@@ -64,4 +61,18 @@ public class SubOpcionLlamada {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/all-by-opcion")
+    public ResponseEntity<List<SubOpcionLlamadaDto>> getAllByIdOpcion(
+            @RequestParam(name = "id-opcion") Long idOpcion,
+            @RequestParam(name = "id-categoria")Long idCategoria
+    ){
+        try {
+            List<SubOpcionLlamadaDto> subOpcionLlamadaDtos = this.subOpcionLlamadaService.getAllByIdOpcion(idOpcion, idCategoria);
+            return ResponseEntity.ok(subOpcionLlamadaDtos);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }

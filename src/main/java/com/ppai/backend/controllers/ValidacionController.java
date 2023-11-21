@@ -1,5 +1,7 @@
 package com.ppai.backend.controllers;
 
+import com.ppai.backend.entities.SubOpcionLlamadaID;
+import com.ppai.backend.entities.Validacion;
 import com.ppai.backend.entities.dto.LlamadaDto;
 import com.ppai.backend.entities.dto.ValidacionDto;
 import com.ppai.backend.services.ValidacionService;
@@ -49,6 +51,20 @@ public class ValidacionController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/all-by-subopcion")
+    public ResponseEntity<List<ValidacionDto>> getAllByIdSubopcion(
+            @RequestParam(name = "id-subopcion") Long idSubo,
+            @RequestParam(name = "id-opcion") Long idOpcion,
+            @RequestParam(name = "id-categoria") Long idCategoria
+    ){
+        try{
+            List<ValidacionDto> validacionDtos = this.validacionService.getAllByIdSubOpcion(idSubo, idOpcion, idCategoria);
+            return ResponseEntity.ok(validacionDtos);
+        }catch(Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

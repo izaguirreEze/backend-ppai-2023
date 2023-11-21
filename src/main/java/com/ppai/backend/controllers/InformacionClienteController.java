@@ -61,4 +61,16 @@ public class InformacionClienteController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/all-by-cliente")
+    public ResponseEntity<List<InformacionClienteDto>> getAllByCliente(
+            @RequestParam(name = "documento-cliente") Long idCliente
+    ){
+        try {
+            List<InformacionClienteDto> informacionClientes = this.informacionClienteService.getAllByCliente(idCliente);
+            return ResponseEntity.ok(informacionClientes);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

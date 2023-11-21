@@ -72,4 +72,16 @@ public class ValidacionServiceImpl implements ValidacionService {
         List<Validacion> validacions = this.validacionRepository.findAll();
         return validacions.stream().map(dtoMapper).toList();
     }
+    @Override
+    public List<ValidacionDto> getAllByIdSubOpcion(Long idSubo, Long idOpcion, Long idCategoria){
+        SubOpcionLlamadaID suboID = new SubOpcionLlamadaID(
+                idSubo,
+                idOpcion,
+                idCategoria
+        );
+        Optional<SubOpcionLlamada> subopcionABuscar = this.subOpcionLlamadaRepository.findById(suboID);
+        SubOpcionLlamada subOpcionLlamada = subopcionABuscar.orElseThrow();
+        List<Validacion> validacions = this.validacionRepository.findAllBySubOpcion(subOpcionLlamada);
+        return validacions.stream().map(dtoMapper).toList();
+    }
 }
