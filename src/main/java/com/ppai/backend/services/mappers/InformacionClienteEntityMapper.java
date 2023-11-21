@@ -11,7 +11,7 @@ public class InformacionClienteEntityMapper implements Function<InformacionClien
     @Override
     public InformacionCliente apply(InformacionClienteDto informacionClienteDto) {
         return new InformacionCliente(
-                informacionClienteDto.getId(),
+                informacionClienteDto.getIdInformacionCliente(),
                 informacionClienteDto.getDatoAValidar(),
                 null,
                 null

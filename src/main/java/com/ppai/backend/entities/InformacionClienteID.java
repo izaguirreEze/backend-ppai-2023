@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Embeddable
 public class InformacionClienteID implements Serializable {
     @Column(name = "id_info_cliente")
-    private long id;
+    private long idInformacionCliente;
     @Column(name = "id_cliente")
     private long idCliente;
 }

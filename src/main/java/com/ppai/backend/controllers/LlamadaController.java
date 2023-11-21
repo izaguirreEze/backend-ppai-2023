@@ -57,7 +57,7 @@ public class LlamadaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<LlamadaDto> update(@PathVariable long id, @RequestBody LlamadaDto llamadaDto) {
-        llamadaDto.setId(id);
+        llamadaDto.setIdLlamada(id);
         LlamadaDto llamadaUpdated = this.llamadaService.update(llamadaDto);
         return ResponseEntity.status(HttpStatus.OK).body(llamadaUpdated);
     }

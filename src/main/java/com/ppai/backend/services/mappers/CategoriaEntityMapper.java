@@ -12,7 +12,7 @@ public class CategoriaEntityMapper implements Function<CategoriaLlamadaDto, Cate
     @Override
     public CategoriaLlamada apply(CategoriaLlamadaDto categoriaLlamadaDto) {
         return new CategoriaLlamada(
-                categoriaLlamadaDto.getId(),
+                categoriaLlamadaDto.getIdCategoriaLlamada(),
                 categoriaLlamadaDto.getNombre(),
                 null,
                 null

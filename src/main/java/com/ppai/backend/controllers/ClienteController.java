@@ -3,6 +3,7 @@ package com.ppai.backend.controllers;
 import com.ppai.backend.entities.dto.CategoriaLlamadaDto;
 import com.ppai.backend.entities.dto.ClienteDto;
 import com.ppai.backend.services.ClienteService;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,8 @@ public class ClienteController {
         try {
             ClienteDto createdCliente = this.clienteService.add(clienteDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdCliente);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } catch (EmptyResultDataAccessException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 

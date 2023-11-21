@@ -54,7 +54,7 @@ public class CambioEstadoServiceImpl implements CambioEstadoService {
             Optional <Estado> est = this.estadoRepository.findFirstByNombre(entity.getNombreEstado());
             Estado estado = est.get();
 
-            Optional<Llamada> llam = this.llamadaRepository.findById(entity.getId().getIdLlamada());
+            Optional<Llamada> llam = this.llamadaRepository.findById(entity.getIdCambioEstado().getIdLlamada());
             Llamada llamada = llam.orElseThrow();
 
             cambioEstado.setLlamada(llamada);

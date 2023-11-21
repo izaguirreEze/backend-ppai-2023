@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubOpcionLlamadaDto {
-    private SubOpcionLlamadaID id;
+    private SubOpcionLlamadaID idSubOpcionLlamada;
     private String nombre;
 }
