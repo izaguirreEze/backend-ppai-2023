@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/v1/subopcion-llamada")
+@RequestMapping("/api/v1/sub-opciones-llamada")
 public class SubOpcionLlamada {
     private final SubOpcionLlamadaService subOpcionLlamadaService;
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/v1/categoria-llamada")
+@RequestMapping("/api/v1/categorias-llamada")
 public class CategoriaLlamadaController {
     private final CategoriaService categoriaService;
 

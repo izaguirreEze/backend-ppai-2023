@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/v1/informacion-cliente")
+@RequestMapping("/api/v1/informacion-clientes")
 public class InformacionClienteController {
     private final InformacionClienteService informacionClienteService;
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/v1/validacion")
+@RequestMapping("/api/v1/validaciones")
 public class ValidacionController {
     private final ValidacionService validacionService;
 
