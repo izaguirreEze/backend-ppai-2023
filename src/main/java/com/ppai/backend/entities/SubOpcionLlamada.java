@@ -33,6 +33,4 @@ public class SubOpcionLlamada {
     @OneToMany(mappedBy = "subOpcion")
     private List<Validacion> validaciones;
 
-    @OneToMany(mappedBy = "subOpcionSeleccionada")
-    private List<Llamada> llamadas;
 }

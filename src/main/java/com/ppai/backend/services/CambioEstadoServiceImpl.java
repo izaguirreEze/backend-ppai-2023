@@ -5,9 +5,9 @@ import com.ppai.backend.entities.dto.CambioEstadoDto;
 import com.ppai.backend.repositories.CambioEstadoIDGRepository;
 import com.ppai.backend.repositories.CambioEstadoRepository;
 import com.ppai.backend.repositories.EstadoRepository;
+import com.ppai.backend.repositories.LlamadaRepository;
 import com.ppai.backend.services.mappers.CambioEstadoDtoMapper;
 import com.ppai.backend.services.mappers.CambioEstadoEntityMapper;
-import org.aspectj.weaver.tools.cache.CacheBacking;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
@@ -23,17 +23,20 @@ public class CambioEstadoServiceImpl implements CambioEstadoService {
     private final EstadoRepository estadoRepository;
     private final CambioEstadoEntityMapper entityMapper;
     private final CambioEstadoDtoMapper dtoMapper;
+    private final LlamadaRepository llamadaRepository;
 
     public CambioEstadoServiceImpl(CambioEstadoRepository cambioEstadoRepository,
                                    CambioEstadoIDGRepository cambioEstadoIDGRepository,
                                    EstadoRepository estadoRepository,
                                    CambioEstadoEntityMapper entityMapper,
-                                   CambioEstadoDtoMapper dtoMapper) {
+                                   CambioEstadoDtoMapper dtoMapper,
+                                   LlamadaRepository llamadaRepository) {
         this.cambioEstadoRepository = cambioEstadoRepository;
         this.cambioEstadoIDGRepository = cambioEstadoIDGRepository;
         this.estadoRepository = estadoRepository;
         this.entityMapper = entityMapper;
         this.dtoMapper = dtoMapper;
+        this.llamadaRepository = llamadaRepository;
     }
 
     @Override
@@ -46,8 +49,15 @@ public class CambioEstadoServiceImpl implements CambioEstadoService {
             // MANEJO DE LA ID DE MIERDA
             long idCambioEstado = this.getUltimoNumero();
             cambioEstado.getId().setIdCambioEstado(idCambioEstado);
+
+
             Optional <Estado> est = this.estadoRepository.findFirstByNombre(entity.getNombreEstado());
             Estado estado = est.get();
+
+            Optional<Llamada> llam = this.llamadaRepository.findById(entity.getId().getIdLlamada());
+            Llamada llamada = llam.orElseThrow();
+
+            cambioEstado.setLlamada(llamada);
             cambioEstado.setEstado(estado);
             cambioEstado.getId().setIdEstado(estado.getId());
             this.cambioEstadoRepository.save(cambioEstado);

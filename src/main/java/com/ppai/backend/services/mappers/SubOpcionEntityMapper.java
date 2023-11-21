@@ -16,7 +16,6 @@ public class SubOpcionEntityMapper implements Function<SubOpcionLlamadaDto, SubO
                 subOpcionLlamadaDto.getNombre(),
                 null,
                 null,
-                null,
                 null
         );
     }

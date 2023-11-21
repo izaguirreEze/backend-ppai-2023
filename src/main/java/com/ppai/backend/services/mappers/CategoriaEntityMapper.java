@@ -15,7 +15,6 @@ public class CategoriaEntityMapper implements Function<CategoriaLlamadaDto, Cate
                 categoriaLlamadaDto.getId(),
                 categoriaLlamadaDto.getNombre(),
                 null,
-                null,
                 null
         );
     }

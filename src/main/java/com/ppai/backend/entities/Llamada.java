@@ -18,7 +18,7 @@ public class Llamada {
     private long id;
 
     @Column(name  = "duracion")
-    private long duracion;
+    private Long duracion;
 
     @Column(name = "descripcion_operador")
     private String descripcionOperador;
@@ -34,24 +34,14 @@ public class Llamada {
     @JoinColumn(name = "estado_actual", referencedColumnName = "id_estado")
     private Estado estadoActual;
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "opcion_seleccionada", referencedColumnName = "id_opcion_llamada", insertable=false, updatable=false),
-            @JoinColumn(name = "id_categoria_llamada", referencedColumnName = "id_categoria_llamada", insertable=false, updatable=false)
-    })
-    private OpcionLlamada opcionSeleccionada;
+    @Column(name = "opcion_seleccionada")
+    private Long opcionSeleccionada;
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "sub_opcion_seleccionada", referencedColumnName = "id_sub_opcion_llamada", insertable=false, updatable=false),
-            @JoinColumn(name = "opcion_seleccionada", referencedColumnName = "id_opcion_llamada", insertable=false, updatable=false),
-            @JoinColumn(name = "id_categoria_llamada", referencedColumnName = "id_categoria_llamada", insertable=false, updatable=false)
-    })
-    private SubOpcionLlamada subOpcionSeleccionada;
+    @Column(name = "sub_opcion_seleccionada")
+    private Long subOpcionSeleccionada;
 
-    @ManyToOne
-    @JoinColumn(name = "id_categoria_llamada")
-    private CategoriaLlamada categoriaLlamada;
+    @Column(name = "id_categoria_llamada")
+    private Long categoriaLlamada;
 
     @OneToMany(mappedBy = "llamada")
     private List<CambioEstado> cambioEstados;

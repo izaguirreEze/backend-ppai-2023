@@ -11,10 +11,16 @@ public class LlamadaDto {
     private long id;
     private String descipcionOperador;
     private String detalleAccionRequerida;
-    private long duracion;
-    private long idCliente;
+    private Long duracion;
+    private Long idCliente;
     private String estado;
-    private long idOpcionSeleccionada;
-    private long idSubOpcionSeleccionada;
-    private long idCategoria;
+    private Long idOpcionSeleccionada;
+    private Long idSubOpcionSeleccionada;
+    private Long idCategoria;
+
+    public LlamadaDto(long id, Long idCliente, String estado){
+        this.id = id;
+        this.idCliente = idCliente;
+        this.estado = estado;
+    };
 }

@@ -1,5 +1,6 @@
 package com.ppai.backend.controllers;
 
+import com.ppai.backend.entities.Llamada;
 import com.ppai.backend.entities.dto.ClienteDto;
 import com.ppai.backend.entities.dto.LlamadaDto;
 import com.ppai.backend.services.ClienteService;
@@ -31,12 +32,12 @@ public class LlamadaController {
     }
 
     @PostMapping
-    public ResponseEntity<LlamadaDto> add(@RequestBody LlamadaDto llamadaDto){
+    public ResponseEntity<?> add(@RequestBody LlamadaDto llamadaDto){
         try {
             LlamadaDto createdLlamada = this.llamadaService.add(llamadaDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdLlamada);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
@@ -52,5 +53,12 @@ public class LlamadaController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LlamadaDto> update(@PathVariable long id, @RequestBody LlamadaDto llamadaDto) {
+        llamadaDto.setId(id);
+        LlamadaDto llamadaUpdated = this.llamadaService.update(llamadaDto);
+        return ResponseEntity.status(HttpStatus.OK).body(llamadaUpdated);
     }
 }

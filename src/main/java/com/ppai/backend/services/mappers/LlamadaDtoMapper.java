@@ -10,16 +10,29 @@ import java.util.function.Function;
 public class LlamadaDtoMapper implements Function<Llamada, LlamadaDto> {
     @Override
     public LlamadaDto apply(Llamada llamada) {
+        Long duracion = null;
+        Long opcionSeleccionada = null;
+        Long subOpcionSeleccionada = null;
+        String descripcionOperador = null;
+        String detalleAccionRequerida = null;
+        Long categoriaLlamada = null;
+
+        if(llamada.getDescripcionOperador() != null) descripcionOperador = llamada.getDescripcionOperador();
+        if(llamada.getDetalleAccionRequerida() != null) detalleAccionRequerida = llamada.getDetalleAccionRequerida();
+        if(llamada.getDuracion() != null) duracion = llamada.getDuracion();
+        if(llamada.getOpcionSeleccionada() != null) opcionSeleccionada = llamada.getOpcionSeleccionada();
+        if(llamada.getSubOpcionSeleccionada() != null) subOpcionSeleccionada = llamada.getSubOpcionSeleccionada();
+        if(llamada.getCategoriaLlamada() != null) categoriaLlamada = llamada.getCategoriaLlamada();
         return new LlamadaDto(
                 llamada.getId(),
-                llamada.getDescripcionOperador(),
-                llamada.getDetalleAccionRequerida(),
-                llamada.getDuracion(),
+                descripcionOperador,
+                detalleAccionRequerida,
+                duracion,
                 llamada.getCliente().getNroDocumento(),
                 llamada.getEstadoActual().getNombre(),
-                llamada.getOpcionSeleccionada().getId().getIdOpcionLlamada(),
-                llamada.getSubOpcionSeleccionada().getId().getIdSubOpcionLlamada(),
-                llamada.getCategoriaLlamada().getIdCategoriaLlamada()
+                opcionSeleccionada,
+                subOpcionSeleccionada,
+                categoriaLlamada
         );
     }
 }
