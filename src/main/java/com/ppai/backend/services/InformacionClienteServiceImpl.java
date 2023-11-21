@@ -39,9 +39,9 @@ public class InformacionClienteServiceImpl implements InformacionClienteService 
             InformacionCliente informacionCliente = informacionClienteOptional.get();
             // MANEJO DE LA ID DE MIERDA
             long id = this.getUltimoNumero();
-            informacionCliente.getId().setId(id);
+            informacionCliente.getId().setIdInformacionCliente(id);
 
-            Optional<Cliente> clienteOptional = this.clienteRepository.findById(entity.getId().getIdCliente());
+            Optional<Cliente> clienteOptional = this.clienteRepository.findById(entity.getIdInformacionCliente().getIdCliente());
             Cliente cliente = clienteOptional.orElseThrow();
 
             Optional<Validacion> validacionOptional = this.validacionRepository.findById(entity.getIdValidacion());

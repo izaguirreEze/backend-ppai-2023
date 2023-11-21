@@ -10,7 +10,7 @@ public class CambioEstadoEntityMapper implements Function<CambioEstadoDto, Cambi
     @Override
     public CambioEstado apply(CambioEstadoDto ce) {
         return new CambioEstado(
-                ce.getId(),
+                ce.getIdCambioEstado(),
                 ce.getFechaHoraInicio(),
                 null,
                 null

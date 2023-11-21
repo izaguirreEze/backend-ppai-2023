@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ValidacionDto {
-    private long id;
+    private long idValidacion;
     private String nombre;
     private long idSubOpcionLlamada;
     private long idOpcionLlamada;

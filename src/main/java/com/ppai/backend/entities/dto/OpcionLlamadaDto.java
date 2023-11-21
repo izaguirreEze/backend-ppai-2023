@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OpcionLlamadaDto {
-    private OpcionLlamadaID id;
+    private OpcionLlamadaID idOpcionLlamada;
     private String nombre;
 }

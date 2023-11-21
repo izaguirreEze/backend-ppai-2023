@@ -19,7 +19,7 @@ public class LlamadaEntityMapper implements Function<LlamadaDto, Llamada> {
         if(llamadaDto.getDescipcionOperador() != null) descripcionOperador = llamadaDto.getDescipcionOperador();
         if(llamadaDto.getDetalleAccionRequerida() != null) detalleAccionRequerida = llamadaDto.getDetalleAccionRequerida();
         return new Llamada(
-                llamadaDto.getId(),
+                llamadaDto.getIdLlamada(),
                 duracion,
                 descripcionOperador,
                 detalleAccionRequerida,

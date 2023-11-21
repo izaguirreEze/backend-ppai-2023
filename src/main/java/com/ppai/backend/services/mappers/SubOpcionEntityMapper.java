@@ -12,7 +12,7 @@ public class SubOpcionEntityMapper implements Function<SubOpcionLlamadaDto, SubO
     @Override
     public SubOpcionLlamada apply(SubOpcionLlamadaDto subOpcionLlamadaDto) {
         return new SubOpcionLlamada(
-                subOpcionLlamadaDto.getId(),
+                subOpcionLlamadaDto.getIdSubOpcionLlamada(),
                 subOpcionLlamadaDto.getNombre(),
                 null,
                 null,

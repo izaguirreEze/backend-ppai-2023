@@ -42,7 +42,7 @@ public class OpcionLlamadaServiceImpl implements OpcionLlamadaService {
             opcionLlamada.getId().setIdOpcionLlamada(id);
 
             // MANEJO DEL RESTO DE PUNTEROS Y CUESTIONES
-            Optional<CategoriaLlamada> categoriaLlamadaOptional = this.categoriaLlamadaRepository.findById(entity.getId().getIdCategoria());
+            Optional<CategoriaLlamada> categoriaLlamadaOptional = this.categoriaLlamadaRepository.findById(entity.getIdOpcionLlamada().getIdCategoria());
             CategoriaLlamada categoriaLlamada = categoriaLlamadaOptional.orElseThrow();
 
             //SETEAR A NUEVO

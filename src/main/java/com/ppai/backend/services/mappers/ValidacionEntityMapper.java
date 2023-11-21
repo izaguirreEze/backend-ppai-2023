@@ -12,7 +12,7 @@ public class ValidacionEntityMapper implements Function<ValidacionDto, Validacio
     @Override
     public Validacion apply(ValidacionDto validacionDto) {
         return new Validacion(
-                validacionDto.getId(),
+                validacionDto.getIdValidacion(),
                 validacionDto.getNombre(),
                 null
         );

@@ -46,13 +46,13 @@ public class SubOpcionLlamadaServiceImpl implements SubOpcionLlamadaService {
 
             // MANEJO DEL RESTO DE PUNTEROS Y CUESTIONES
             OpcionLlamadaID opID = new OpcionLlamadaID(
-                    entity.getId().getIdOpcionLlamada(),
-                    entity.getId().getIdCategoriaLlamada()
+                    entity.getIdSubOpcionLlamada().getIdOpcionLlamada(),
+                    entity.getIdSubOpcionLlamada().getIdCategoriaLlamada()
             );
             Optional<OpcionLlamada> opcionLlamadaOptional = this.opcionLlamadaRepository.findById(opID);
             OpcionLlamada opcionLlamada = opcionLlamadaOptional.orElseThrow();
 
-            Optional<CategoriaLlamada> categoriaLlamadaOptional = this.categoriaLlamadaRepository.findById(entity.getId().getIdCategoriaLlamada());
+            Optional<CategoriaLlamada> categoriaLlamadaOptional = this.categoriaLlamadaRepository.findById(entity.getIdSubOpcionLlamada().getIdCategoriaLlamada());
             CategoriaLlamada categoriaLlamada = categoriaLlamadaOptional.orElseThrow();
 
             //SETEAR A NUEVO

@@ -12,7 +12,7 @@ public class OpcionEntityMapper implements Function<OpcionLlamadaDto, OpcionLlam
     @Override
     public OpcionLlamada apply(OpcionLlamadaDto opcionLlamadaDto) {
         return new OpcionLlamada(
-                opcionLlamadaDto.getId(),
+                opcionLlamadaDto.getIdOpcionLlamada(),
                 opcionLlamadaDto.getNombre(),
                 null,
                 null

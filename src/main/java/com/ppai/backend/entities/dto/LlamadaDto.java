@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LlamadaDto {
-    private long id;
+    private long idLlamada;
     private String descipcionOperador;
     private String detalleAccionRequerida;
     private Long duracion;
@@ -19,7 +19,7 @@ public class LlamadaDto {
     private Long idCategoria;
 
     public LlamadaDto(long id, Long idCliente, String estado){
-        this.id = id;
+        this.idLlamada = id;
         this.idCliente = idCliente;
         this.estado = estado;
     };

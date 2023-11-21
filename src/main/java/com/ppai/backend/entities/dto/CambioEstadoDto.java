@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CambioEstadoDto {
-    private CambioEstadoID id;
+    private CambioEstadoID idCambioEstado;
     private String nombreEstado;
     private LocalDateTime fechaHoraInicio;
 }
