@@ -14,5 +14,5 @@ public class OpcionLlamadaID implements Serializable{
     @Column(name = "id_opcion_llamada")
     private long idOpcionLlamada;
     @Column(name = "id_categoria_llamada")
-    private long idCategoria;
+    private long idCategoriaLlamada;
 }
